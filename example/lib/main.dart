@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_embed_webview/platforms/facebook-video.dart';
 import 'package:social_embed_webview/platforms/facebook-post.dart';
+import 'package:social_embed_webview/platforms/twitter-profile.dart';
 import 'package:social_embed_webview/platforms/youtube.dart';
 import 'package:social_embed_webview/platforms/instagram.dart';
 import 'package:social_embed_webview/platforms/twitter.dart';
@@ -20,6 +21,7 @@ String dataFBPost = "https://www.facebook.com/WHO/posts/3425180564193969";
 
 /// id of youtube video. eg: https://www.youtube.com/watch?v=F8JfodMfQbg value after `?v=`
 String dataYt = "F8JfodMfQbg";
+String twUsername = "kumbakarna96";
 
 void main() {
   runApp(MyApp());
@@ -35,28 +37,24 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           backgroundColor: Colors.white),
-      home: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Social Embed WebView Example'),
-          ),
-          body: SingleChildScrollView(
-            child: Column(
-                children: [
-              TwitterEmbedData(embedHtml: tweetContent),
-              InstagramEmbedData(embedHtml: instaContent),
-              YoutubeEmbedData(videoId: dataYt),
-              FacebookVideoEmbedData(videoUrl: dataFb),
-              FacebookPostEmbedData(postUrl: dataFBPost)
-            ]
-                    .map((o) => Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: SocialEmbed(
-                            socialMediaObj: o,
-                          ),
-                        ))
-                    .toList()),
-          ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Social Embed WebView Example'),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+              children: [
+            // TwitterEmbedData(embedHtml: tweetContent),
+            // InstagramEmbedData(embedHtml: instaContent),
+            // YoutubeEmbedData(videoId: dataYt),
+            // FacebookVideoEmbedData(videoUrl: dataFb),
+            // FacebookPostEmbedData(postUrl: dataFBPost),
+            TwitterProfileEmbedData(username: twUsername),
+          ]
+                  .map((o) => SocialEmbed(
+                        socialMediaObj: o,
+                      ))
+                  .toList()),
         ),
       ),
     );
